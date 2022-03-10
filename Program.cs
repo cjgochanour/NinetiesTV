@@ -36,6 +36,7 @@ namespace NinetiesTV
             Print("Genres From 80s", EightiesShows(shows));
             Print("All Genres", TheGenres(shows));
             Print("Shows Per Year", ShowsPerYear(shows));
+            Print("Runtime Of All Shows Combined", MinutesOfTv(shows));
         }
 
         /**************************************************************************************************
@@ -224,6 +225,10 @@ namespace NinetiesTV
             return returnList;
         }
         // 4. Assume each episode of a comedy is 22 minutes long and each episode of a show that isn't a comedy is 42 minutes. How long would it take to watch every episode of each show?
+        static int MinutesOfTv(List<Show> shows)
+        {
+            return (22 * shows.Where(s => s.Genres.Contains("Comedy")).Sum(s => s.EpisodeCount)) + (42 * shows.Where(s => !s.Genres.Contains("Comedy")).Sum(s => s.EpisodeCount));
+        }
         // 5. Assume each show ran each year between its start and end years (which isn't true), which year had the highest average IMDB rating.
 
 
