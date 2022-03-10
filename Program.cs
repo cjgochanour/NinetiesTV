@@ -183,7 +183,7 @@ namespace NinetiesTV
         // 23. Do the same as above, but put the word "and" between the second-to-last and last show name.
         static string AllNamesWithCommasPlsAnd(List<Show> shows)
         {
-            throw new NotImplementedException();
+            return String.Join(", ", shows.Select(s => s.Name).Take(shows.Count - 1)) + " and " + shows.Last().Name;
         }
 
 
